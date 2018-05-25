@@ -6,7 +6,17 @@ var getAll = () => {
     console.log('Getting all notes');
 };
 
+var getNote = (title) => {
+    console.log(`Reading note: ${title}\n`);
+};
+
+var removeNote = (title) => {
+    console.log(`Removing note: ${title}\n`);
+};
+
 module.exports = {
     addNote,
-    getAll
+    getAll,
+    getNote,
+    removeNote
 }
