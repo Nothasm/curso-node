@@ -7,13 +7,21 @@ console.log('Command: ',command);
 
 if (command === 'add') {
     console.log('Adding new note\n');
-    notes.addNote(argv.title, argv.body);
+    var note = notes.addNote(argv.title, argv.body);
+    if (note)
+        console.log('note added');
+    else
+        console.log("title already there");
+
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
     notes.getNote(argv.title);
 } else if (command === 'remove') {
-    notes.removeNote(argv.title);
+    if(notes.removeNote(argv.title))
+        console.log('Removed');
+    else 
+        console.log('not removed');
 } else {
     console.log('Command invalid');
 }
