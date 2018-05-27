@@ -12,6 +12,12 @@ var saveNotes = (notes) => {
     fs.writeFileSync('data.json', JSON.stringify(notes));
 };
 
+var logNote = (note) => {
+    console.log(`----------`);
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+};
+
 var addNote = (title, body) => {
     var notes = fetchNotes();
     var note = {
@@ -31,11 +37,15 @@ var addNote = (title, body) => {
 };
 
 var getAll = () => {
-    console.log('Getting all notes');
+    return fetchNotes();
 };
 
 var getNote = (title) => {
-    console.log(`Reading note: ${title}\n`);
+    var notes = fetchNotes();
+    var note =  notes.filter((n) => {
+        return n.title === title;
+    });
+    return note[0];
 };
 
 var removeNote = (title) => {
@@ -54,5 +64,6 @@ module.exports = {
     addNote,
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 }
