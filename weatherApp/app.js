@@ -19,11 +19,12 @@ geocode.geocodeAddress(argv.address, (errorMessage, results) => {
     if (errorMessage) {
         console.log(errorMessage);
     } else {
-        weather.get(results, (error, weather) => {
+        console.log(results.address);
+        weather.get(results.lat, results.lng, (error, weather) => {
             if (error) {
                 console.log(error);
             } else {
-                console.log(weather);
+                console.log(`Agora faz ${weather}º`);
             }
         });
     }
